@@ -7,7 +7,6 @@
     "start": "node index.js",
     "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage --color",
-    "test-data-structs": "jest ./data-structures/ --verbose --coverage --color",
     "test-watch": "jest --watchAll --verbose --coverage",
     "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
   },
