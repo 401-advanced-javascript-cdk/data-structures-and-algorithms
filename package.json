@@ -1,26 +1,23 @@
 {
-  "name": "401d30-data-structures-and-algorithms",
+  "name": "data-structures-and-algorithms",
   "version": "1.0.0",
-  "description": "Data structure implementations and coding/algorithm challenges",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "lint": "eslint **/*.js",
-    "test": "jest --verbose --color",
-    "test-watch": "jest --watchAll --verbose --coverage",
-    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
+    "test": "jest --coverage --verbose --color"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kozlowskicd/401d30-data-structures-and-algorithms.git"
+    "url": "git+https://github.com/401-advanced-javascript-cdk/data-structures-and-algorithms.git"
   },
+  "keywords": [],
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kozlowskicd/401d30-data-structures-and-algorithms/issues"
-  },
-  "homepage": "https://github.com/kozlowskicd/401d30-data-structures-and-algorithms#readme",
+  "license": "ISC",
   "dependencies": {
     "jest": "^24.8.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/401-advanced-javascript-cdk/data-structures-and-algorithms/issues"
+  },
+  "homepage": "https://github.com/401-advanced-javascript-cdk/data-structures-and-algorithms#readme"
 }
