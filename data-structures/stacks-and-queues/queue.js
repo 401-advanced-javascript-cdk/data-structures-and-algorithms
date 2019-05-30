@@ -31,6 +31,8 @@ class Queue {
   dequeue() {
     let currentNode = this.rear
     if(currentNode === this.front) {
+      this.front = null;
+      this.rear = null;
       this.length--;
       return currentNode && currentNode.value || null;
     }
