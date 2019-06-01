@@ -1,12 +1,6 @@
 'use strict';
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
+const Node = require('./node.js');
 
 class BinaryTree {
   constructor(root) {
@@ -62,49 +56,4 @@ class BinaryTree {
   }
 }
 
-let b = new BinaryTree(1);
-b.root.left = new Node(2);
-b.root.right = new Node(3);
-b.root.left.left = new Node(4);
-b.root.left.right = new Node(5);
-b.root.right.left = new Node(6);
-b.root.right.right = new Node(7);
-
-console.log({tree: b});
-
-let preOrder = b.preOrder();
-let inOrder = b.inOrder();
-let postOrder = b.postOrder();
-
-console.log({preOrder, inOrder, postOrder});
-
-class BinarySearchTree {
-  constructor(value) {
-    this.root = new Node(value);
-  }
-
-  add(value) {
-
-    const _next = root => {
-
-      if (value < root.value) {
-        (console.log(`${value} is lower than ${root.value}, going left`))
-        if(root.left === null) {
-          root.left = new Node(value);
-          return;
-        } else { _next (root.left) };
-      }
-
-      else if (value > root.value) {
-        (console.log(`${value} is higher than ${root.value}, going right`))
-        if(root.right === null) {
-          root.right = new Node(value);
-          return;
-        } else { _next(root.right) };
-      }    
-    }
-    _next(this.root);
-  }
-}
-
-module.exports = {BinaryTree, BinarySearchTree};
+module.exports = BinaryTree
