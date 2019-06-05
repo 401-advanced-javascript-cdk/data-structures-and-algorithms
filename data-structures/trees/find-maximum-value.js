@@ -10,12 +10,12 @@ const findMax = (root) => {
     let node = q.dequeue();
     if(node.left) q.enqueue(node.left);
     if(node.right) q.enqueue(node.right);
-    if(typeof temp !== 'number') temp = node.value;
-    if(node.value > temp) temp = node.value;
+    if (typeof node.value === 'number') {
+      if(typeof temp !== 'number') temp = node.value;
+      if(node.value > temp) temp = node.value;
+    }
   }
-  return temp;
+  return temp || null;
 }
 
 module.exports = findMax;
-
-console.log(findMax(tree.root));
