@@ -1,8 +1,9 @@
-'use strict';
+const Stack = require('../../data-structures/stacks-and-queues/stack.js');
 
 module.exports = {
-  
-  revArray1: array => {
+
+  revArray1: (inputArray) => {
+    const array = inputArray;
     let back = array.length - 1;
     let front = 0;
     let temp;
@@ -10,22 +11,21 @@ module.exports = {
       temp = array[front];
       array[front] = array[back];
       array[back] = temp;
-      front++;
-      back--;
+      front += 1;
+      back -= 1;
     }
     return array;
   },
-  
-  stackRevArray: array => {
-    const Stack = require('../../data-structures/stacks-and-queues/stack.js');
-    let stack = new Stack();
-    for(let i = 0; i < array.length; i++) {
+
+  stackRevArray: (inputArray) => {
+    const stack = new Stack();
+    const array = inputArray;
+    for (let i = 0; i < array.length; i += 1) {
       stack.push(array[i]);
-      console.log({log: array[i]})
     }
-    for(let j = 0; j < array.length; j++) {
+    for (let j = 0; j < array.length; j += 1) {
       array[j] = stack.pop();
     }
     return array;
-  }
-}
+  },
+};

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose --color"
+    "test": "jest --coverage --verbose --color",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/401-advanced-javascript-cdk/data-structures-and-algorithms/issues"
   },
-  "homepage": "https://github.com/401-advanced-javascript-cdk/data-structures-and-algorithms#readme"
+  "homepage": "https://github.com/401-advanced-javascript-cdk/data-structures-and-algorithms#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
 }

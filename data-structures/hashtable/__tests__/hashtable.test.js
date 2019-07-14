@@ -1,5 +1,3 @@
-'use strict';
-
 const HashTable = require('../hashtable.js');
 
 describe('HashTable', () => {
@@ -14,7 +12,7 @@ describe('HashTable', () => {
     it('adds a key and value to a linked list in the table', () => {
       const table = new HashTable();
       table.add('test', 123);
-      expect(table.data).toContainEqual({"head": {"data": {"test": 123}, "next": null}});
+      expect(table.data).toContainEqual({ head: { data: { test: 123 }, next: null } });
     });
   });
   describe('.contains method', () => {
@@ -44,7 +42,7 @@ describe('HashTable', () => {
       const table = new HashTable();
       table.add('test', 123);
       table.add('tset', 'this is next');
-      expect(table.data).toContainEqual({"head": {"data": {"test": 123}, "next": {"data": {"tset": "this is next"}, "next": null}}});
+      expect(table.data).toContainEqual({ head: { data: { test: 123 }, next: { data: { tset: 'this is next' }, next: null } } });
     });
     it('.get can retrieve collided keys regardless of their posistion in that bucket\'s linked list', () => {
       const table = new HashTable();

@@ -1,6 +1,4 @@
-'use strict';
-
-const LinkedList = require('../linked-list/lib/singly-linked-list.js');
+const LinkedList = require('../linked-list/singly-linked-list.js');
 
 class HashTable {
   constructor() {
@@ -9,29 +7,28 @@ class HashTable {
 
   hash(key) {
     let code = 0;
-    for (let index in key) {
-      code += key.charCodeAt(index) * 97;
+    for (let i = 0; i < key.length; i += 1) {
+      code += key.charCodeAt(i) * 97;
     }
     return code % this.data.length;
   }
 
   add(key, value) {
-    let index = this.hash(key);
-    if(this.data[index] === undefined) {
-      let list = new LinkedList();
-      list.append({[key]: value});
+    const index = this.hash(key);
+    if (this.data[index] === undefined) {
+      const list = new LinkedList();
+      list.append({ [key]: value });
       this.data[index] = list;
-    }
-    else {
-      this.data[index].append({[key]: value});
+    } else {
+      this.data[index].append({ [key]: value });
     }
   }
 
   get(key) {
-    let index = this.hash(key);
+    const index = this.hash(key);
     if (this.data[index] && this.data[index].head) {
       let currentNode = this.data[index].head;
-      while(currentNode) {
+      while (currentNode) {
         if (currentNode.data[key]) {
           return currentNode.data[key];
         }
@@ -39,26 +36,24 @@ class HashTable {
       }
       return null;
     }
-    else {
-      return null;
-    }
+
+    return null;
   }
 
   contains(key) {
-      let index = this.hash(key);
-      if (this.data[index] && this.data[index].head) {
-        let currentNode = this.data[index].head;
-        while(currentNode) {
-          if (currentNode.data[key]) {
-            return true;
-          }
-          currentNode = currentNode.next;
+    const index = this.hash(key);
+    if (this.data[index] && this.data[index].head) {
+      let currentNode = this.data[index].head;
+      while (currentNode) {
+        if (currentNode.data[key]) {
+          return true;
         }
-        return false;
+        currentNode = currentNode.next;
       }
-      else {
-        return false;
-      }
+      return false;
+    }
+
+    return false;
   }
 }
 

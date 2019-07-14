@@ -1,43 +1,41 @@
-'use strict';
-
-const LinkedList = require('../../data-structures/linked-list/lib/singly-linked-list.js');
-const Tree = require('../../data-structures/trees/tree.js');
-const Node = require('../../data-structures/trees/node.js');
+/* eslint-disable no-param-reassign */
+const LinkedList = require('../../data-structures/linked-list/singly-linked-list.js');
 
 const findPath = (tree, start, end) => {
-  const findStart = root => {
+  // eslint-disable-next-line consistent-return
+  const findEnd = (node, list, prev = []) => {
+    if (node && node.value === end) {
+      prev.forEach((prevNode) => {
+        list.append(prevNode);
+      });
+      return list;
+    }
+
+
+    if (node.left) {
+      return findEnd(node.left, list, [...prev, node]);
+    }
+    if (node.right) {
+      return findEnd(node.right, list, [...prev, node]);
+    }
+  };
+
+  const findStart = (root) => {
     if (root.value === start) {
-      let list = new LinkedList();
+      const list = new LinkedList();
+      list.append(root);
       return findEnd(root, list);
     }
-    if(root.left) {
+    if (root.left) {
       return findStart(root.left);
     }
-    if(root.right) {
+    if (root.right) {
       return findStart(root.right);
     }
     return new LinkedList();
-  }
-  const findEnd = (node, list, prev) => {
-    console.log({node})
-    if (node && node.value === end) {
-      prev.next = node;
-      node.next = null;
-      return list;
-    }
-    else {
-      if (prev) prev.next = node;
-      prev = node; 
-      if (node.left) {
-        return findEnd(node.left, list, prev);
-      }
-      if (node.right) {
-        return findEnd(node.right, list, prev);
-      }
-    }
-  }
-  findStart(tree.root);
-  return new LinkedList();
-}
+  };
+
+  return findStart(tree.root) || new LinkedList();
+};
 
 module.exports = findPath;

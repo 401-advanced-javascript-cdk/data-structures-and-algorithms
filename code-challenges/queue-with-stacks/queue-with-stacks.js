@@ -1,6 +1,4 @@
-'use strict';
-
-const Stack = require('./stack.js');
+const Stack = require('../../data-structures/stacks-and-queues/stack.js');
 
 class PseudoQueue {
   constructor() {
@@ -13,17 +11,15 @@ class PseudoQueue {
   }
 
   dequeue() {
-    if(this.stack2.top === null) {
+    if (this.stack2.top === null) {
       let current = this.stack1.top;
-      while(current) {
+      while (current) {
         this.stack2.push(this.stack1.pop());
         current = current.next;
       }
       return this.stack2.pop();
     }
-    else {
-      return this.stack2.pop();
-    }
+    return this.stack2.pop();
   }
 }
 

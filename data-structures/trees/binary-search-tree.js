@@ -1,5 +1,3 @@
-'use strict';
-
 const Node = require('./node.js');
 
 class BinarySearchTree {
@@ -8,40 +6,34 @@ class BinarySearchTree {
   }
 
   add(value) {
-
-    const _next = root => {
-
-      if (value < root.value) {
-        if(root.left === null) {
-          root.left = new Node(value);
-          return;
-        } else { _next (root.left) };
+    const next = (root) => {
+      const node = root;
+      if (value < node.value) {
+        if (node.left === null) {
+          node.left = new Node(value);
+        } else { next(node.left); }
+      } else if (value > node.value) {
+        if (node.right === null) {
+          node.right = new Node(value);
+        } else { next(node.right); }
       }
-
-      else if (value > root.value) {
-        if(root.right === null) {
-          root.right = new Node(value);
-          return;
-        } else { _next(root.right) };
-      }    
-    }
-    _next(this.root);
+    };
+    next(this.root);
   }
 
   contains(value) {
     let result = false;
-    const _next = (node) => {
+    const next = (node) => {
       if (node === null) {
         return;
       }
-      if(node.value === value) {
+      if (node.value === value) {
         result = true;
       }
-      _next(node.left);
-      _next(node.right);
-    }
-    
-    _next(this.root);
+      next(node.left);
+      next(node.right);
+    };
+    next(this.root);
     return result;
   }
 }
