@@ -12,6 +12,5 @@ list.append(5)
 list.append(6)
 list.append(7)
 list.append(8)
-list.insertBefore(8, 22)
-list.insertAfter(5, 10)
-console.log(list.print());
+console.log(list.getKthFromEnd(2));
+console.log(list.getKthFromEnd(7));

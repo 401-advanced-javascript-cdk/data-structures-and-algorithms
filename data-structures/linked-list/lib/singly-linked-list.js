@@ -81,6 +81,19 @@ class SinglyLinkedList {
     }
   }
 
+  getKthFromEnd(numFromEnd) {
+    let fast = this.head;
+    let slow = this.head;
+    for (let i = 0; i < numFromEnd; i++) {
+      fast = fast.next;
+    }
+    while(fast.next) {
+      fast = fast.next;
+      slow = slow.next;
+    }
+    return slow.data;
+  }
+
   includes(value) {
     try {
       let currentNode = this.head;
