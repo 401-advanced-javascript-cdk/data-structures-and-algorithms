@@ -2,6 +2,16 @@
 
 const treeIntersections = (tree1, tree2) => {
 
+  const _getTreeNodeValues = (node, treeNodes = {}) => {
+    if (!node) {
+      return null;
+    }
+    treeNodes[node.value] = true;
+    _getTreeNodeValues(node.left, treeNodes);
+    _getTreeNodeValues(node.right, treeNodes);
+    return treeNodes;
+  };
+
   const _findCommonValues = (node, treeNodes, array = []) => {
     if (!node) return null;
     if (treeNodes[node.value]) {
@@ -17,20 +27,10 @@ const treeIntersections = (tree1, tree2) => {
     }
   };
 
-  const _getTreeNodes = (node, treeNodes = {}) => {
-    if (!node) {
-      return null;
-    }
-    treeNodes[node.value] = true;
-    _getTreeNodes(node.left, treeNodes);
-    _getTreeNodes(node.right, treeNodes);
-    return treeNodes;
-  };
-
-  if (!tree1 || !tree2) {
+  if (!tree1.root || !tree2.root) {
     return null;
   }
-  const treeNodes = _getTreeNodes(tree1.root);
+  const treeNodes = _getTreeNodeValues(tree1.root);
   return _findCommonValues(tree2.root, treeNodes);
 };
   
